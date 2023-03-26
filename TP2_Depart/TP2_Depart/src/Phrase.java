@@ -1,8 +1,11 @@
 // VOUS POUVEZ MODIFIER CE FICHIER
 
+import java.util.List;
+
 public class Phrase {
     private Mot premier, dernier;
     private int nbMots;
+    private List<String> liste;
 
     public Phrase() {
         // N'hésitez pas à modifier ce constructeur au besoin.
@@ -16,8 +19,21 @@ public class Phrase {
         // Vous devrez coder la méthode ajouter(Mot mot) pour que cela fonctionne.
         this();
         String[] mots = str.split("\s");
-        for (String mot : mots)
+        nbMots = mots.length;
+        premier = new Mot(mots[0]);
+        dernier = new Mot(mots[nbMots - 1]);
+        for (String mot : mots ) {
             ajouter(new Mot(mot));
+            liste.add(mot);
+        }
+    }
+
+    public String toString(){
+        String phrase = "";
+        for (String mot : liste) {
+            phrase += mot + " ";
+        }
+        return phrase;
     }
 
     public void ajouter(String str) {
