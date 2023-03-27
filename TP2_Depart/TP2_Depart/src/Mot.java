@@ -2,17 +2,17 @@
 import java.util.Vector;
 
 public class Mot {
-    private Vector lettres;
+    Vector<Character> lettres;
     private int nbLettres;
 
-    public Mot suivant = null;
 
     public Mot() {
-        lettres = new Vector();
+        lettres = new Vector<Character>();
         nbLettres = 0;
     }
 
     public Mot(String str) {
+        lettres = new Vector<Character>();
         assert str.indexOf(' ') == -1 : "Un mot ne peut contenir d'espaces";
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -39,7 +39,7 @@ public class Mot {
     }
 
     public char getLettre(int index){
-        if (index < 0 || index >= nbLettres) {
+        if (index < 0 || index > nbLettres) {
             return '0';
         }
         return (char) lettres.get(index);
@@ -59,7 +59,7 @@ public class Mot {
 
 
     public boolean inserer(char lettre, int index){
-        if (index < 0 || index >= nbLettres) {
+        if (index < 0 || index > nbLettres) {
             return false;
         }
         int currentSize = lettres.size();
@@ -72,25 +72,4 @@ public class Mot {
         lettres.trimToSize();
         return true;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
